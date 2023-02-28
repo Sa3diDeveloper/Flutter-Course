@@ -1,0 +1,112 @@
+
+Diagram For Lifecycle Of Flutter App
+Stages Of App Lifecycle:
+The life cycle depends on the state and how it changes. A stateful widget has a state so we can clarify the life cycle of flutter dependent on it. Stage of the life cycle:
+
+createState()
+
+initState()
+firt lifecycle method that is clled and called before the build method
+didChangeDependencies()
+
+build()
+
+didUpdateWidget()
+
+setState()
+
+deactivate()
+
+dispose()
+
+Let deeply explain on Stage of the life cycle:
+
+> createState()
+This method is called when we create another Stateful Widget. It is an obligatory strategy. The createState() returns a case of a State-related with it.
+
+class HomeScreen extends StatefulWidget {
+
+  HomeScreen({Key key}) : super(key: key);
+  
+  @override
+  HomeScreenState<StatefulWidget> createState() => HomeScreen();
+}
+> initState()
+This is the strategy that is considered when the Widget is made interestingly and it is called precisely once for each State object. If we characterize or add some code in the initState() method this code will execute first even before the widgets are being built.
+
+This method needs to call super.initState() which essentially calls the initState of the parent widget (Stateful widget). Here you can initialize your variables, objects, streams, AnimationController, and so on.
+
+@override
+void initState(){
+  super.initState();
+}
+> didChangeDependencies()
+This method is called following the initState() method whenever the widget initially is constructed. You can incorporate not many functionalities like API calls dependent on parent data changes, variable re-initializations, and so forth.
+
+@override
+void didChangeDependencies() {
+
+}
+> build()
+This strategy is the main method as the rendering of all the widgets relies upon it. It is called each time when we need to render the UI Widgets on the screen.
+
+At whatever point you need to update your UI or on the other hand on the off chance that you click hot-reload, the Flutter structure modifies the build() strategy!. Assuming you need to expressly revamp the UI if any information is transformed, you can utilize setState() which teaches the framework to again run the form method!
+
+@override
+Widget build(BuildContext context) {
+  return Scaffold()
+}
+
+> didUpdateWidget()
+This strategy is utilized when there is some adjustment of the configuration by the Parent widget.
+ It is essentially called each time we hot reload the application for survey the updates made to 
+ the widget
+
+If the parent widget changes its properties or designs, and the parent needs to modify the child 
+widget, with a similar Runtime Type, then, at that point, didUpdateWidget is triggered. 
+This withdraws to the old widget and buys into the arrangement changes of the new widget!.
+
+@protected
+void didUpdateWidget(Home oldWidget) {
+  super.didUpdateWidget(oldWidget);
+}
+> setState()
+The setState() method illuminates the framework that the internal state of this item has changed 
+in a manner that may affect the UI which makes the structure plan a build for this State of the 
+object.
+
+It is an error to call this method after the system calls dispose(). 
+This inside state could conceivably influence the UI apparent to the user and subsequently, 
+it becomes important to rebuild the UI.
+
+void function(){
+  setState(() {});
+}
+> deactivate()
+This method is considered when the State is removed out from the tree, however, this strategy 
+can be additionally be re-embedded into the tree in another part.
+
+This strategy is considered when the widget is as of now not joined to the Widget Tree yet it 
+very well may be appended in a later stage. The best illustration of this is the point at which 
+you use Navigator. push to move to the following screen, deactivate is called because the client 
+can move back to the past screen and the widget will again be added to the tree!.
+
+@override
+void deactivate(){
+  super.deactivate();
+}
+
+> dispose()
+This strategy is essentially something contrary to the initState() method and is likewise 
+important. It is considered when the object and its State should be eliminated from the Widget 
+Tree forever and won’t ever assemble again.
+
+Here you can unsubscribe streams, cancel timers, dispose animations controllers, close documents, 
+and so on. At the end of the day, you can deliver every one of the assets in this strategy. 
+Presently, later on, if the Widget is again added to Widget Tree, the whole lifecycle will 
+again be followed!.
+
+@override
+void dispose(){
+  super.dispose();
+}
