@@ -1,0 +1,4 @@
+#Wed Jan 11 21:06:12 AST 2023
+base.0=F\:\\Flutter Auth-LoginSignIn-Example -Github\\build\\app\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
